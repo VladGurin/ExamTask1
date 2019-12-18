@@ -1,0 +1,76 @@
+import java.util.Scanner;
+
+public class ExamTask3 {
+
+    /*Ход коня по шахматной доске. Вводится текущее положение
+    коня и клетка в которую пробуют его передвинуть за 1 ход.
+    Программа должна проверить, возможно ли это сделать. */
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+
+        int HorseX; // создаем две переменные для начального положения коня
+        int HorseY;
+
+        // вводим координаты текущего положения коня в диапазоне 1-8 по оси X
+        do { System.out.println("Input coordinate X from 1 to 8 , where Horse stay now : ");
+            //   Scanner scanner = new Scanner(System.in);
+            HorseX = scanner.nextInt(); }
+        while ((HorseX < 1) || (HorseX > 8));
+
+// вводим координаты текущего положения коня в диапазоне 1-8 по оси Y
+        do { System.out.println("Input coordinate Y from 1 to 8 , where Horse stay now : ");
+            //Scanner scanner = new Scanner(System.in);
+            HorseY = scanner.nextInt(); }
+        while ((HorseY < 1) || (HorseY > 8));
+
+        int[] ArrX = new int[8]; // деаем два массива с возможными значениями координат куда может походить конь
+        int[] ArrY = new int[8];
+        ArrX[0] = HorseX - 2;
+        ArrY[0] = HorseY - 1;
+        ArrX[1] = HorseX - 2;
+        ArrY[1] = HorseY + 1;
+        ArrX[2] = HorseX - 1;
+        ArrY[2] = HorseY + 2;
+        ArrX[3] = HorseX + 1;
+        ArrY[3] = HorseY + 2;
+        ArrX[4] = HorseX + 2;
+        ArrY[4] = HorseY + 1;
+        ArrX[5] = HorseX + 2;
+        ArrY[5] = HorseY - 1;
+        ArrX[6] = HorseX + 1;
+        ArrY[6] = HorseY - 2;
+        ArrX[7] = HorseX - 1;
+        ArrY[7] = HorseY - 2;
+
+        int GoToX;
+        int GoToY;
+
+// вводим координаты положения коня в диапазоне 1-8 по оси X, куда хотим его передвинуть
+        do { System.out.println("Input coordinate X from 1 to 8 , where Horse have to go : ");
+            // Scanner scanner = new Scanner(System.in);
+            GoToX = scanner.nextInt(); }
+        while ((GoToX < 1) || (GoToX > 8));
+
+// вводим координаты положения коня в диапазоне 1-8 по оси Y, куда хотим его передвинуть
+        do { System.out.println("Input coordinate Y from 1 to 8 , where Horse stay now : ");
+            // Scanner scanner = new Scanner(System.in);
+            GoToY = scanner.nextInt(); }
+        while ((GoToY < 1) || (GoToY > 8));
+
+boolean B = false;
+        for (int i = 0; i < 8; i++) {
+
+            if ((GoToX == ArrX[i]) && (GoToY == ArrY[i])) { // проверяем совпадают ли введенные координаты с возможными,куда может походить конь
+                B = true;
+            }
+        }
+
+        if (B) {
+            System.out.println("Position that has been inputed  - wright");
+        } else
+            System.out.println("Position that has been inputed  - wrong");
+
+    }
+}
+
